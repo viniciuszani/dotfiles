@@ -10,5 +10,5 @@ I'm currently using it on Ubuntu.
 
 ## How-to use dotfiles
 
-Clone this repository into your home folder and run `./setup` from the repository root directory.
+Clone this repository into your home folder and run `./setup` from the repository's root directory.
 
