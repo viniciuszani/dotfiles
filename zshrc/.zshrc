@@ -1,6 +1,6 @@
 #export VIM="nvim"
 
-export DOTFILES=$HOME/.dotfiles
+export DOTFILES=$HOME/dotfiles
 
 source $DOTFILES/fzf/key-bindings.zsh
 source $DOTFILES/fzf/completion.zsh
@@ -11,7 +11,7 @@ alias n="nvim"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/vinicius/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,

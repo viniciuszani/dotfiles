@@ -1,19 +1,26 @@
 #!/bin/bash
-DOTFILE_HOME=$HOME/.dotfiles
+CURRENT_FILE="$(realpath "${BASH_SOURCE[0]}")"
+DOTFILE_HOME="$(dirname "$CURRENT_FILE")"
 
-# neovim nightly
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-mv nvim.appimage $HOME/.local/bin/nvim
+function installEverything() {
+    # neovim nightly
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x nvim.appimage
+    mv nvim.appimage $HOME/.local/bin/nvim
 
-# tsserver lsp
-npm i -g typescript-language-server
+    # tsserver lsp
+    npm i -g typescript-language-server
 
-# other dependencies
-sudo apt install ripgrep tmux zsh
+    # other dependencies
+    sudo apt install ripgrep tmux zsh
 
-# oh my zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # oh my zsh
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
+if [[ "$1" == "install" ]]; then
+    installEverything
+fi
 
 pushd $DOTFILE_HOME
 PACKAGES="alacritty nvim tmux zshrc"
