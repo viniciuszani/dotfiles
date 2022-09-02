@@ -1,0 +1,17 @@
+
+[user]
+  signingkey = 58783016FCDEA16D
+# https://github.com/settings/emails
+  email = 806442+viniciuszani@users.noreply.github.com
+  name = Vinicius Zani
+
+[commit]
+	gpgsign = true
+
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  sshCommand = "ssh -i ~/.ssh/id_rsa_zani_dev -F /dev/null"
+

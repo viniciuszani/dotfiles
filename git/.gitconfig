@@ -1,0 +1,32 @@
+# Current keys:
+# # GPG = gpg -K --keyid-format LONG
+
+# Multi-key, multi-folder configuration based on this gist.
+# https://gist.github.com/bgauduch/06a8c4ec2fec8fef6354afe94358c89e
+[includeIf "gitdir:~/Zani/"]
+  path = ~/.gitconfig-personal
+[includeIf "gitdir:~/DataMilk/"]
+  path = ~/.gitconfig-professional
+
+[alias]
+  a      = add
+  ca     = commit -a
+  cam    = commit -am
+  cm     = commit -m
+  s      = status
+  p      = push
+  pom    = push origin main
+  puom   = pull origin main
+  cob    = checkout -b
+  co     = checkout
+  fp     = fetch --prune --all
+  l      = log --oneline --decorate --graph
+  lall   = log --oneline --decorate --graph --all
+  ls     = log --oneline --decorate --graph --stat
+  lt     = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'
+
+[credential]
+	helper = cache --timeout 3600
+
+[diff]
+  tool = vimdiff

@@ -1,11 +1,17 @@
-#export VIM="nvim"
+# export VIM="nvim"
 
 export DOTFILES=$HOME/dotfiles
+export INSTANCE_LABEL="zani"
 
 source $DOTFILES/fzf/key-bindings.zsh
 source $DOTFILES/fzf/completion.zsh
 
-alias n="nvim"
+alias n="nvim -O2"
+alias work="cd $HOME/DataMilk/datamilk"
+alias dot="cd $HOME/dotfiles"
+alias ytw="yarn test --collectCoverage=false --watch"
+alias ytc="yarn test --collectCoverage=true"
+alias yt="yarn test --collectCoverage=false"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -111,4 +117,18 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 path+=("$HOME/.pyenv/bin")
+
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# replace ls with lsd
+alias ls='lsd'
+#alias ll='lsd --color always -lh'
+#alias l='lsd --color always -lh'
+
+# use imwheel
+# imwheel -k -b "4 5"
+
+# Init zoxide
+eval "$(zoxide init zsh)"
 

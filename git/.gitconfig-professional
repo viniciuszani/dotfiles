@@ -1,0 +1,14 @@
+[user]
+  signingkey = F63C77A1E0D42DC2
+  email = zani@datamilk.app
+  name = Vinicius Zani
+
+[commit]
+	gpgsign = true
+
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  sshCommand = "ssh -i ~/.ssh/id_ed25519_datamilk -F /dev/null"

@@ -81,6 +81,11 @@ Plug 'sbdchd/neoformat'
 "  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 " Plug 'hoob3rt/lualine.nvim'
 
+" File navigator
+" https://github.com/ms-jpq/chadtree
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+
+
 call plug#end()
 
 
@@ -144,6 +149,9 @@ nnoremap <leader>Y gg"+yG
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+
+" File Manager *CHADtree
+nnoremap <leader>b <cmd>CHADopen<cr>
 
 " vim TODO
 nmap <Leader>tu <Plug>BujoChecknormal
