@@ -12,6 +12,8 @@ set wildignore+=**/node_modules/*
 set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
+" Yanks to the system clipboard
+set clipboard=unnamedplus
 
 call plug#begin('~/.vim/plugged')
 

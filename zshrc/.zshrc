@@ -6,7 +6,9 @@ export INSTANCE_LABEL="zani"
 source $DOTFILES/fzf/key-bindings.zsh
 source $DOTFILES/fzf/completion.zsh
 
-alias n="nvim -O2"
+alias n="nvim"
+# If you prefer to always open two tabs
+# alias n="nvim -O2"
 alias work="cd $HOME/DataMilk/datamilk"
 alias dot="cd $HOME/dotfiles"
 alias ytw="yarn test --collectCoverage=false --watch"
