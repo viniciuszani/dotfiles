@@ -6,7 +6,7 @@ set wildmode=longest,list,full
 set wildmenu
 " Ignore files
 set wildignore+=*.pyc
-set wildignore+=*_build/*
+set wildignore+=*_buildeng-3279-storage-usage-bytes-utility-method/*
 set wildignore+=**/coverage/*
 set wildignore+=**/node_modules/*
 set wildignore+=**/android/*
@@ -89,6 +89,9 @@ Plug 'sbdchd/neoformat'
 " https://github.com/ms-jpq/chadtree
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 
+# Wrapper for vim-obsession
+# Adds session-saving capabilities to nvim so we can resume working from where we left off.
+Plugin 'tpope/vim-obsession'
 
 call plug#end()
 

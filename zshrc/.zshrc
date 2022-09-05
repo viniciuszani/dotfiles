@@ -6,16 +6,6 @@ export INSTANCE_LABEL="zani"
 source $DOTFILES/fzf/key-bindings.zsh
 source $DOTFILES/fzf/completion.zsh
 
-alias n="nvim"
-# If you prefer to always open two tabs
-# alias n="nvim -O2"
-alias work="cd $HOME/DataMilk/datamilk"
-alias dot="cd $HOME/dotfiles"
-alias ytw="yarn test --collectCoverage=false --watch"
-alias ytc="yarn test --collectCoverage=true"
-alias yt="yarn test --collectCoverage=false"
-# replace ls with lsd (installed using cargo)
-alias ls='lsd'
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -128,4 +118,22 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # Init zoxide
 eval "$(zoxide init zsh)"
+
+# Alias should be added to the bottom of the file JIC.
+alias n="nvim"
+# If you prefer to always open two tabs
+# alias n="nvim -O2"
+alias work="cd $HOME/DataMilk/datamilk"
+alias dot="cd $HOME/dotfiles"
+alias ytw="yarn test --collectCoverage=false --watch"
+alias ytc="yarn test --collectCoverage=true"
+alias yt="yarn test --collectCoverage=false"
+# replace ls with lsd (installed using cargo)
+alias ls='lsd -alF'
+alias l='lsd -alF'
+alias ll='lsd -alF'
+alias la='lsd -A'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias grep='grep --color=auto'
 
