@@ -14,6 +14,8 @@ alias dot="cd $HOME/dotfiles"
 alias ytw="yarn test --collectCoverage=false --watch"
 alias ytc="yarn test --collectCoverage=true"
 alias yt="yarn test --collectCoverage=false"
+# replace ls with lsd (installed using cargo)
+alias ls='lsd'
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -123,13 +125,6 @@ path+=("$HOME/.pyenv/bin")
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
-# replace ls with lsd
-alias ls='lsd'
-#alias ll='lsd --color always -lh'
-#alias l='lsd --color always -lh'
-
-# use imwheel
-# imwheel -k -b "4 5"
 
 # Init zoxide
 eval "$(zoxide init zsh)"
