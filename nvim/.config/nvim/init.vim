@@ -89,8 +89,10 @@ Plug 'sbdchd/neoformat'
 " https://github.com/ms-jpq/chadtree
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 
-call plug#end()
+" VScode-like selection of tokens
+"Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
+call plug#end()
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
