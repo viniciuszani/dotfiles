@@ -89,10 +89,6 @@ Plug 'sbdchd/neoformat'
 " https://github.com/ms-jpq/chadtree
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 
-# Wrapper for vim-obsession
-# Adds session-saving capabilities to nvim so we can resume working from where we left off.
-Plugin 'tpope/vim-obsession'
-
 call plug#end()
 
 
