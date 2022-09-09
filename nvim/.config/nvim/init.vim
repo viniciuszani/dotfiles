@@ -108,7 +108,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 " - Download your font from: https://www.nerdfonts.com/font-downloads
 " - Unzip it to ~/.fonts
 " - Run: $ fc-cache -fv
-" (currently using: RobotoMono Nerd Font)
+" (currently using: DroidSansMono)
 
 call plug#end()
 
