@@ -1,5 +1,5 @@
-local sumneko_root_path = "/home/theprimeagen/personal/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+--local sumneko_root_path = "/home/theprimeagen/personal/lua-language-server"
+--local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
 
 vim.lsp.set_log_level("debug")
 
@@ -150,19 +150,23 @@ require("lspconfig").sumneko_lua.setup(config({
 	},
 }))
 --]]
-local opts = {
-	-- whether to highlight the currently hovered symbol
-	-- disable if your cpu usage is higher than you want it
-	-- or you just hate the highlight
-	-- default: true
-	highlight_hovered_item = true,
+--
+--
 
-	-- whether to show outline guides
-	-- default: true
-	show_guides = true,
-}
 
-require("symbols-outline").setup(opts)
+--local opts = {
+--	-- whether to highlight the currently hovered symbol
+--	-- disable if your cpu usage is higher than you want it
+--	-- or you just hate the highlight
+--	-- default: true
+--	highlight_hovered_item = true,
+--
+--	-- whether to show outline guides
+--	-- default: true
+--	show_guides = true,
+--}
+--
+--require("symbols-outline").setup(opts)
 
 local snippets_paths = function()
 	local plugins = { "friendly-snippets" }
@@ -183,3 +187,49 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	include = nil, -- Load all languages
 	exclude = {},
 })
+
+--require("null-ls").setup({
+--    sources = {
+--        require("null-ls").builtins.formatting.stylua,
+--        require("null-ls").builtins.diagnostics.eslint,
+--        require("null-ls").builtins.completion.spell,
+--    },
+--})
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  on_attach = function(client, bufnr)
+    if client.server_capabilities.documentFormattingProvider then
+      vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
+
+      -- format on save
+      vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+    end
+
+    if client.server_capabilities.documentRangeFormattingProvider then
+      vim.cmd("xnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.range_formatting({})<CR>")
+    end
+  end,
+})
+
+local prettier = require("prettier")
+
+prettier.setup({
+  bin = 'prettier', -- or `'prettierd'` (v0.22+)
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+  },
+})
+

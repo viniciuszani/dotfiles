@@ -37,7 +37,7 @@ Plug 'wellle/context.vim'
 
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
-Plug 'simrat39/symbols-outline.nvim'
+"Plug 'simrat39/symbols-outline.nvim'
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
 
@@ -110,6 +110,10 @@ Plug 'kyazdani42/nvim-web-devicons'
 " - Run: $ fc-cache -fv
 " (currently using: DroidSansMono)
 
+" Prettier
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'MunifTanjim/prettier.nvim'
+
 call plug#end()
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
@@ -118,6 +122,9 @@ lua require("theprimeagen")
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
+
+" Look at me, I'm the lua guy now
+"lua require("zani")
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -213,6 +220,9 @@ augroup THE_PRIMEAGEN
     autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END
+
+" Syntax highlighting
+syntax enable
 
 " Setup the new statusbar
 lua << END
