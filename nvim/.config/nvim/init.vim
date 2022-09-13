@@ -114,6 +114,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'MunifTanjim/prettier.nvim'
 
+Plug 'nvim-telescope/telescope-file-browser.nvim'
+
 call plug#end()
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
@@ -124,7 +126,7 @@ let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 
 " Look at me, I'm the lua guy now
-"lua require("zani")
+lua require("zani")
 
 if executable('rg')
     let g:rg_derive_root='true'

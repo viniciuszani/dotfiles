@@ -83,6 +83,8 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  # Fuzzy finder for tab-completion
+  fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh

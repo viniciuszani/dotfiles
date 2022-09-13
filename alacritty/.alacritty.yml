@@ -427,7 +427,8 @@ shell:
   args:
     - -l
     - -c
-    - "tmux a -t DevEnv"
+    - "tmux"
+    #- "tmux a -t DevEnv"
 #  args:
 #    - --login
 
