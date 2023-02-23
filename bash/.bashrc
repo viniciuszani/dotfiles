@@ -122,3 +122,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=~/.google/keys/datamilk-dev.json
 export PATH="$(yarn global bin):$PATH"
 export BROWSER=/snap/ungoogled-chromium/x1/chrome
 
+# Deno setup.
+export DENO_INSTALL="/home/vinicius/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
