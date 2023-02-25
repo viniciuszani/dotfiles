@@ -1,4 +1,0 @@
--- This file structure is heavily based on craftzdog dotfiles.
--- git@github.com:craftzdog/dotfiles-public.git
-require('zani.vim-options')
-
