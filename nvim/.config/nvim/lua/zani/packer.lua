@@ -61,5 +61,12 @@ return require('packer').startup(function(use)
 
   -- Git from neovim.
   use 'tpope/vim-fugitive'
+
+  -- File browser.
+  use {
+    'ms-jpq/chadtree',
+    branch = 'chad',
+    run = 'python3 -m chadtree deps',
+  }
 end)
 
