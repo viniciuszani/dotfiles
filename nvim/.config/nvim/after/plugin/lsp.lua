@@ -38,9 +38,9 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "gn", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "gp", function() vim.diagnostic.goto_prev() end, opts)
   -- Code actions.
-  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("n", "<leader>vc", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   -- Insertion mode: help about signature.
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)

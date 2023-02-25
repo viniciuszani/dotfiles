@@ -26,8 +26,8 @@ return require('packer').startup(function(use)
   })
 
   -- Treesitter / LSP
-  use('nvim-treesitter/nvim-treesitter',  { run = ':TSUpdate'}) 
-  use 'nvim-treesitter/playground'  
+  use('nvim-treesitter/nvim-treesitter',  { run = ':TSUpdate'})
+  use 'nvim-treesitter/playground'
 
   -- Code completion
   use {
