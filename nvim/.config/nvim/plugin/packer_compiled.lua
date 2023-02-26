@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
+    url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -164,6 +169,11 @@ _G.packer_plugins = {
     path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["peepsight.nvim"] = {
+    loaded = true,
+    path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/peepsight.nvim",
+    url = "https://github.com/koenverburg/peepsight.nvim"
+  },
   playground = {
     loaded = true,
     path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/playground",
@@ -194,6 +204,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-test"] = {
+    loaded = true,
+    path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
+  },
+  vimspector = {
+    loaded = true,
+    path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/vimspector",
+    url = "https://github.com/puremourning/vimspector"
   }
 }
 

@@ -53,6 +53,9 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Method signature assistant (for parameters)
+  use 'ray-x/lsp_signature.nvim'
+
   -- Harpoon for quick file buffers
   use 'ThePrimeagen/harpoon'
 
@@ -68,5 +71,14 @@ return require('packer').startup(function(use)
     branch = 'chad',
     run = 'python3 -m chadtree deps',
   }
+
+  -- Debugger
+  use 'puremourning/vimspector'
+
+  -- Run tests
+  use 'vim-test/vim-test'
+
+  -- Focus only on the current code block
+  use 'koenverburg/peepsight.nvim'
 end)
 
