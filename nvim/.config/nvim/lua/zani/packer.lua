@@ -80,5 +80,8 @@ return require('packer').startup(function(use)
 
   -- Focus only on the current code block
   use 'koenverburg/peepsight.nvim'
+
+  -- Navigating on the screen using fewer keystrokes.
+  use 'ggandor/leap.nvim'
 end)
 

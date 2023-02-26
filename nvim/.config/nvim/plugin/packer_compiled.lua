@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/vinicius/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
