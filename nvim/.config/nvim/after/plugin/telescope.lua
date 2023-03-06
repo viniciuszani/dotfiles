@@ -33,10 +33,4 @@ vim.keymap.set('n', '<C-t>', builtin.lsp_references, {})
 
 -- Telescope file browsing.
 vim.keymap.set('n', '<C-f>', function() file_browser.file_browser() end, {})
---vim.api.nvim_set_keymap(
---  "n",
---  "<C-f>",
---  ":Telescope file_browser",
---  { noremap = true }
---)
 
