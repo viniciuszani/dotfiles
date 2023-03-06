@@ -8,6 +8,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Telescope fzf
+  -- Using live grep, so ensure to have ripgrep installed:
+  -- https://github.com/BurntSushi/ripgrep
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
   -- or                            , branch = '0.1.x',
@@ -65,6 +67,9 @@ return require('packer').startup(function(use)
   -- Method signature assistant (for parameters)
   use 'ray-x/lsp_signature.nvim'
 
+  -- LSP error messages using theme values.
+  use 'folke/lsp-colors.nvim'
+
   -- Harpoon for quick file buffers
   use 'ThePrimeagen/harpoon'
 
@@ -92,5 +97,11 @@ return require('packer').startup(function(use)
 
   -- Navigating on the screen using fewer keystrokes.
   use 'ggandor/leap.nvim'
+
+  -- Git integration: current file status.
+  use {
+    'lewis6991/gitsigns.nvim',
+    -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+  }
 end)
 

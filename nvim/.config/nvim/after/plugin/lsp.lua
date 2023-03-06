@@ -9,7 +9,6 @@ lsp.ensure_installed({
   -- 'sumneko_lua', -- This is not working currently.
 })
 
-
 -- Remap some keys for autocomplete.
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -41,12 +40,28 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vc", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
-  -- Insertion mode: help about signature.
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 -- Prevent error messages from creating an extra column on your
 -- screen and moving content around all the time.
 vim.opt.signcolumn = 'yes'
+
+-- Configure how the LSP error messages are displayed.
+-- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config()
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+})
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    virtual_text = true,
+    signs = true,
+    update_in_insert = false,
+  }
+)
 
 lsp.setup()
