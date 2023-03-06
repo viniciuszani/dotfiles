@@ -7,4 +7,5 @@ require('peepsight').setup({
   "generator_function_declaration"
 })
 
-vim.cmd.PeepsightEnable()
+-- Disabled. Avoid flickering colors for a while.
+-- vim.cmd.PeepsightEnable()

@@ -53,6 +53,15 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Refactoring lib based on LSP / AST.
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
+
   -- Method signature assistant (for parameters)
   use 'ray-x/lsp_signature.nvim'
 
