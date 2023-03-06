@@ -16,6 +16,15 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- Telescope file browsing with actions.
+  use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim"
+    }
+  }
+
   -- Themes section
   use 'arcticicestudio/nord-vim'
   use 'morhetz/gruvbox'
@@ -63,6 +72,11 @@ return require('packer').startup(function(use)
         {"nvim-treesitter/nvim-treesitter"}
     }
   }
+
+  -- Prettier / linting.
+  -- Depends on: https://github.com/fsouza/prettierd
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'MunifTanjim/prettier.nvim'
 
   -- Method signature assistant (for parameters)
   use 'ray-x/lsp_signature.nvim'

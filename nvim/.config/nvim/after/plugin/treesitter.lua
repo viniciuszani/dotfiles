@@ -5,7 +5,7 @@ require'nvim-treesitter.configs'.setup {
     "help",
     "javascript",
     "typescript",
-    "c", 
+    "c",
     "lua",
     "vim",
     "query",
