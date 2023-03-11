@@ -9,7 +9,6 @@ lsp.ensure_installed({
   'lua_ls',
   'pylsp', -- for python.
   'taplo', -- toml files.
-  'yaml-language-server', -- yaml files.
   -- 'sumneko_lua', -- This is not working currently.
 })
 
