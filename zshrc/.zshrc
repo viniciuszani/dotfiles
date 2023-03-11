@@ -119,10 +119,21 @@ export PATH="$HOME/local/bin:$PATH"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+# Beautify the shell a bit.
+export STARSHIP_CONFIG=~$DOTFILES/starship/starship.toml
 
-# Init zoxide
-eval "$(zoxide init zsh)"
+# Rust binaries that the commands below depend on:
+# cargo install starship zoxide ripgrep \
+#   lsd bat mprocs gitui
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)" # Use Z to navigate quickly.
+alias ls='lsd -alF' # LSD is better than ls.
+alias l='lsd -alF'
+alias ll='lsd -alF'
+alias la='lsd -A'
+alias du='dust' # Modern disk usage binary.
 
+# Other aliases.
 # Alias should be added to the bottom of the file JIC.
 alias n="nvim"
 # If you prefer to always open two tabs
@@ -132,11 +143,6 @@ alias dot="cd $HOME/dotfiles"
 alias ytw="yarn test --collectCoverage=false --watch"
 alias ytc="yarn test --collectCoverage=true"
 alias yt="yarn test --collectCoverage=false"
-# replace ls with lsd (installed using cargo)
-alias ls='lsd -alF'
-alias l='lsd -alF'
-alias ll='lsd -alF'
-alias la='lsd -A'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias grep='grep --color=auto'

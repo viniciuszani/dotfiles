@@ -3,9 +3,13 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-  'tsserver',
+  -- 'tsserver', -- This server fails to properly identify references.
+  'vtsls',
   'eslint',
   'lua_ls',
+  'pylsp', -- for python.
+  'taplo', -- toml files.
+  'yaml-language-server', -- yaml files.
   -- 'sumneko_lua', -- This is not working currently.
 })
 
