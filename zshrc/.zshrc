@@ -125,8 +125,9 @@ export STARSHIP_CONFIG=$DOTFILES/starship/starship.toml
 # Rust binaries that the commands below depend on:
 # cargo install starship zoxide ripgrep \
 #   lsd bat mprocs gitui
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)" # Why?
 eval "$(zoxide init zsh)" # Use Z to navigate quickly.
+alias f='fzf' # Find files in cwd using fzf.
 alias ls='lsd -alF' # LSD is better than ls.
 alias l='lsd -alF'
 alias ll='lsd -alF'
@@ -138,8 +139,11 @@ alias du='dust' # Modern disk usage binary.
 alias n="nvim"
 # If you prefer to always open two tabs
 # alias n="nvim -O2"
-alias work="cd $HOME/DataMilk/datamilk"
-alias dot="cd $HOME/dotfiles"
+alias work="cd $HOME/DataMilk/datamilk && clear"
+alias dot="cd $HOME/dotfiles && clear"
+alias p="cd $HOME/Zani && clear"
+
+# Work aliases
 alias ytw="yarn test --collectCoverage=false --watch"
 alias ytc="yarn test --collectCoverage=true"
 alias yt="yarn test --collectCoverage=false"
