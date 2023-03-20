@@ -6,8 +6,16 @@ require("telescope").setup {
       theme = "ivy",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
+      hidden = true,
     },
   },
+
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      ".git",
+    },
+  }
 }
 
 -- To get telescope-file-browser loaded and working with telescope,
@@ -16,8 +24,8 @@ require("telescope").load_extension "file_browser"
 
 local file_browser= require("telescope").extensions.file_browser
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+-- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', [[:Telescope find_files hidden=true<CR>]], {})
 
 -- Grepping section. This helps A LOT.
 -- Fzf on grep

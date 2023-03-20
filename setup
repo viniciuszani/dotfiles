@@ -4,6 +4,20 @@ DOTFILE_HOME="$(dirname "$CURRENT_FILE")"
 DOTFILE_HOME=$HOME/.dotfiles
 
 function installEverything() {
+  # Python and pip
+  if ! type "pip" ; then
+    echo "Installing Python / pip..."
+    sudo apt update
+    sudo apt install python3
+    python -m ensurepip --upgrade
+  fi
+
+  # Ansible
+  if ! type "ansible" ; then
+    echo "Installing Ansible..."
+    python3 -m pip install --user ansible
+  fi
+
     # neovim nightly
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x nvim.appimage

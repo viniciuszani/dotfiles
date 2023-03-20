@@ -1,3 +1,8 @@
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+require("neodev").setup({
+  -- add any options here, or leave empty to use the default settings
+})
+
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
@@ -30,8 +35,11 @@ lsp.setup_nvim_cmp({
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
-  -- Goto definition.
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  -- Goto definition in the current buffer.
+  vim.keymap.set("n", "gs", function() vim.lsp.buf.definition() end, opts)
+  -- Goto definition on a new tab.
+  vim.keymap.set("n", "gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
+
   -- Trigger the autocompletion menu.
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -89,3 +97,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 lsp.setup()
 
+vim.lsp.start({
+  name = "lua-language-server",
+  cmd = { "lua-language-server" },
+  before_init = require("neodev.lsp").before_init,
+  root_dir = vim.fn.getcwd(),
+  settings = { Lua = {} },
+})

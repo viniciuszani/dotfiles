@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('plugins')` from your init.vimpack
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -84,14 +84,13 @@ return require('packer').startup(function(use)
   -- LSP error messages using theme values.
   use 'folke/lsp-colors.nvim'
 
-  -- Harpoon for quick file buffers
-  use 'ThePrimeagen/harpoon'
-
   -- Undo tree
   use 'mbbill/undotree'
 
   -- Git from neovim.
   use 'tpope/vim-fugitive'
+  -- With GitHub so :GBrowse works.
+  use 'tpope/vim-rhubarb'
 
   -- File browser.
   use {
@@ -100,14 +99,28 @@ return require('packer').startup(function(use)
     run = 'python3 -m chadtree deps',
   }
 
+
   -- Debugger
-  use 'puremourning/vimspector'
+  -- Install datapters: https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
+  use 'mfussenegger/nvim-dap'
+  use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+  }
 
   -- Run tests
-  use 'vim-test/vim-test'
-
-  -- Focus only on the current code block
-  use 'koenverburg/peepsight.nvim'
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'antoinemadec/FixCursorHold.nvim',
+      -- Test runners
+      'haydenmeade/neotest-jest',
+    }
+  }
 
   -- Navigating on the screen using fewer keystrokes.
   use 'ggandor/leap.nvim'
@@ -117,5 +130,17 @@ return require('packer').startup(function(use)
     'lewis6991/gitsigns.nvim',
     -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
   }
+
+  -- Editor Tab styling.
+  use 'nanozuki/tabby.nvim'
+
+  -- Comment toggling utility.
+  use 'numToStr/Comment.nvim'
+
+  -- Manipulate surrounding elements easier.
+  use 'tpope/vim-surround'
+
+  -- Lua method signature helper.
+  use 'folke/neodev.nvim'
 end)
 
