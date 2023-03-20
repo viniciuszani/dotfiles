@@ -142,5 +142,15 @@ return require('packer').startup(function(use)
 
   -- Lua method signature helper.
   use 'folke/neodev.nvim'
+
+  -- Time has come: ChatGPT
+  use({
+    "jackMort/ChatGPT.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
 end)
 

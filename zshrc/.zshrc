@@ -6,6 +6,11 @@ export INSTANCE_LABEL="zani"
 source $DOTFILES/fzf/key-bindings.zsh
 source $DOTFILES/fzf/completion.zsh
 
+# Private configurations
+if [[ -f $HOME/.zshrc_private ]]; then
+  source $HOME/.zshrc_private
+fi
+
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -155,3 +160,4 @@ alias grep='grep --color=auto'
 alias python='python3'
 alias pip='pip3'
 
+alias reload='source ~/.zshrc'
