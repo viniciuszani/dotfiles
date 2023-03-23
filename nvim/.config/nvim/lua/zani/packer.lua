@@ -152,5 +152,8 @@ return require('packer').startup(function(use)
       "nvim-telescope/telescope.nvim"
     }
   })
+
+  -- Time has come again: Copilot
+  use 'github/copilot.vim'
 end)
 

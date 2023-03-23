@@ -23,7 +23,7 @@ require("chatgpt").setup({
     scroll_down = "<C-d>",
     toggle_settings = "<C-o>",
     new_session = "<C-n>",
-    cycle_windows = "<Tab>",
+    cycle_windows = "<C-t>",
     -- in the Sessions pane
     select_session = "<Space>",
     rename_session = "r",
