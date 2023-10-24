@@ -21,14 +21,53 @@ lsp.ensure_installed({
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-l>'] = cmp.mapping.confirm({ select = true }),
   ['<C-Space>'] = cmp.mapping.complete(),
+  ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-d>'] = cmp.mapping.scroll_docs(4),
+  ['<C-e>'] = cmp.mapping.close(),
+  ['<CR>'] = cmp.mapping.confirm({
+    behavior = cmp.ConfirmBehavior.Insert,
+    select = true,
+  })
 })
 
+
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+
+  mapping = cmp_mappings,
+
+  sources = {
+    { name = 'path' },                              -- file paths
+    { name = 'nvim_lsp', keyword_length = 3 },      -- from language server
+    { name = 'nvim_lsp_signature_help'},            -- display function signatures with current parameter emphasized
+    { name = 'nvim_lua', keyword_length = 2},       -- complete neovim's Lua runtime API such vim.lsp.*
+    { name = 'buffer', keyword_length = 2 },        -- source current buffer
+    { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip 
+    { name = 'calc'},                               -- source for math calculation
+  },
+
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+
+  formatting = {
+    fields = {'menu', 'abbr', 'kind'},
+    format = function(entry, item)
+      local menu_icon ={
+        nvim_lsp = 'λ',
+        vsnip = '⋗',
+        buffer = 'Ω',
+        path = '🖫',
+      }
+      item.menu = menu_icon[entry.source.name]
+      return item
+    end,
+  },
+
 })
 
 -- Mappings to navigate to definitions and so on.
@@ -36,9 +75,9 @@ lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
   -- Goto definition in the current buffer.
-  vim.keymap.set("n", "gs", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   -- Goto definition on a new tab.
-  vim.keymap.set("n", "gd", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
+  vim.keymap.set("n", "gt", "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
 
   -- Trigger the autocompletion menu.
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -77,22 +116,32 @@ end)
 -- screen and moving content around all the time.
 vim.opt.signcolumn = 'yes'
 
+local diagnosticsDefaults = {
+  underline = true,
+  virtual_text = false,
+  signs = true,
+  update_in_insert = true,
+  severity_sort = false,
+  float = {
+      border = 'rounded',
+      source = 'always',
+      header = '',
+      prefix = '',
+  },
+}
+
+-- If you prefer floating errors.
+-- When on, suggested 
+vim.cmd([[
+  autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
+
 -- Configure how the LSP error messages are displayed.
 -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config()
-vim.diagnostic.config({
-  underline = true,
-  virtual_text = true,
-  signs = true,
-  update_in_insert = false,
-})
+vim.diagnostic.config(diagnosticsDefaults)
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = true,
-    signs = true,
-    update_in_insert = false,
-  }
+  vim.lsp.diagnostic.on_publish_diagnostics, diagnosticsDefaults
 )
 
 lsp.setup()

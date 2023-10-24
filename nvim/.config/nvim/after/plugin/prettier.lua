@@ -14,6 +14,6 @@ prettier.setup({
     "scss",
     "typescript",
     "typescriptreact",
-    "yaml",
+    -- "yaml",
   },
 })

@@ -50,3 +50,8 @@ for PACKAGE in $PACKAGES; do
 done
 popd
 
+# manual links
+CONFIG_DIR=$HOME/.config
+
+ln -s $DOTFILE_HOME/i3/config $CONFIG_DIR/i3/
+ln -s $DOTFILE_HOME/polybar/* $CONFIG_DIR/polybar/

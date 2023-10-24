@@ -104,11 +104,6 @@ return require('packer').startup(function(use)
   -- Install datapters: https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
   use 'mfussenegger/nvim-dap'
   use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
-  use {
-    "microsoft/vscode-js-debug",
-    opt = true,
-    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-  }
 
   -- Run tests
   use {
@@ -143,6 +138,9 @@ return require('packer').startup(function(use)
   -- Lua method signature helper.
   use 'folke/neodev.nvim'
 
+  -- Hello, rust.
+  -- use 'simrat39/rust-tools.nvim'
+
   -- Time has come: ChatGPT
   use({
     "jackMort/ChatGPT.nvim",
@@ -155,5 +153,26 @@ return require('packer').startup(function(use)
 
   -- Time has come again: Copilot
   use 'github/copilot.vim'
+
+  -- WARN: test it.
+  -- NOTE: it works.
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  -- Better indentation.
+  use "lukas-reineke/indent-blankline.nvim"
+
+  -- Rust lang defaults for neovim.
+  -- Neovim has some rust support natively, but it's often outdated and buggy.
+  use 'rust-lang/rust.vim'
 end)
 

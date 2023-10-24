@@ -89,7 +89,8 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   # Fuzzy finder for tab-completion
-  fzf-tab
+  # Disabled since the UX is no good.
+  # fzf-tab
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -120,7 +121,7 @@ fi
 path+=("$HOME/.pyenv/bin")
 
 
-export PATH="$HOME/local/bin:$PATH"
+export PATH="$HOME/local/bin:$(go env GOPATH)/bin:$(yarn global bin):$PATH"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
@@ -138,15 +139,19 @@ alias l='lsd -alF'
 alias ll='lsd -alF'
 alias la='lsd -A'
 alias du='dust' # Modern disk usage binary.
+alias lg='lazygit' # Git UI.
 
 # Other aliases.
 # Alias should be added to the bottom of the file JIC.
 alias n="nvim"
 # If you prefer to always open two tabs
 # alias n="nvim -O2"
-alias work="cd $HOME/DataMilk/datamilk && clear"
+#alias work="cd $HOME/DataMilk/datamilk && clear"
 alias dot="cd $HOME/dotfiles && clear"
+
 alias p="cd $HOME/Zani && clear"
+alias lazy="cd $HOME/LazyAI/ && clear"
+alias vos="cd $HOME/VOS/ && clear"
 
 # Work aliases
 alias ytw="yarn test --collectCoverage=false --watch"
@@ -161,3 +166,11 @@ alias python='python3'
 alias pip='pip3'
 
 alias reload='source ~/.zshrc'
+
+# pnpm
+export PNPM_HOME="/home/vinicius/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
