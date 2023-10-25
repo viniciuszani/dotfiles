@@ -1,3 +1,3 @@
-vim.opt.list = true
-
-require("ibl").setup()
+-- vim.opt.list = true
+--
+-- require("ibl").setup()

@@ -169,10 +169,13 @@ return require('packer').startup(function(use)
   }
 
   -- Better indentation.
-  use "lukas-reineke/indent-blankline.nvim"
+  -- use "lukas-reineke/indent-blankline.nvim"
 
   -- Rust lang defaults for neovim.
   -- Neovim has some rust support natively, but it's often outdated and buggy.
   use 'rust-lang/rust.vim'
+
+  -- Nice notifications.
+  use 'rcarriga/nvim-notify'
 end)
 
