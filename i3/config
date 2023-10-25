@@ -10,6 +10,11 @@
 #
 set $mod Mod1
 
+# Grab those from 'xrandr --query'
+# Alternative: mons (utility from Github)
+set $externalDisplay DP-1-1
+set $laptopDisplay eDP-1
+
 new_window pixel 1
 new_float normal
 
@@ -45,7 +50,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Adjust the displays.
-exec --no-startup-id xrandr --output DP-1 --left-of eDP-1
+exec --no-startup-id xrandr --output $externalDisplay --left-of $laptopDisplay
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -96,7 +101,8 @@ bindsym $mod+Shift+Right move right
 # Workspace defiitions.
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+# Disabled so I can use the bluetooth command
+# bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 # navigate workspaces next / previous
 bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Ctrl+h workspace prev
@@ -285,3 +291,11 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym $mod+o exec amixer set Master -q 5%-
 bindsym $mod+p exec amixer set Master -q 5%+
 
+# Workaround if the second monitor goes blank after entering the sleep mode / lock screen
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output $externalDisplay --off && sleep 3 && xrandr --output $externalDisplay --left-of $laptopDisplay
+
+# Audio controls
+bindsym $mod+Shift+a exec --no-startup-id pavucontrol
+
+# Bluetooth connection
+bindsym $mod+Shift+b exec --no-startup-id blueman-manager
