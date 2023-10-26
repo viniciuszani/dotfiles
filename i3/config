@@ -288,8 +288,17 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
 bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 
+# Volume control
 bindsym $mod+o exec amixer set Master -q 5%-
 bindsym $mod+p exec amixer set Master -q 5%+
+
+# Brightness control (laptop screen)
+# Install and grab the device by executing:
+# sudo apt install brightnessctl
+# brightnessctl -l
+set $laptopScreen acpi_video0
+bindsym $mod+9 exec --no-startup-id brightnessctl -d $laptopScreen set 10%-
+bindsym $mod+0 exec --no-startup-id brightnessctl -d $laptopScreen set 10%+
 
 # Workaround if the second monitor goes blank after entering the sleep mode / lock screen
 bindsym $mod+Shift+m exec --no-startup-id xrandr --output $externalDisplay --off && sleep 3 && xrandr --output $externalDisplay --left-of $laptopDisplay
