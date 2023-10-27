@@ -280,6 +280,9 @@ mode "$mode_gaps_outer" {
 # set power-manager and volume control
 exec --no-startup-id mate-power-manager
 
+# File sync.
+exec --no-startup-id nextcloud
+
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2db- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle

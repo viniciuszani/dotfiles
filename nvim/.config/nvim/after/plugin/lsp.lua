@@ -7,6 +7,10 @@ local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
 
+-- Dependencies:
+-- Python: https://pypi.org/project/python-lsp-server/
+-- sudo apt install python3-pylsp python3-pylsp-rope python3-pylsp-mypy python3-pylsp-isort
+-- sudo snap install ruff # Ubuntu has no official installation candidate at this point
 lsp.ensure_installed({
   -- 'tsserver', -- This server fails to properly identify references.
   'vtsls',
