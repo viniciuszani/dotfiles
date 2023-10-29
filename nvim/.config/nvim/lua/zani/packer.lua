@@ -14,7 +14,6 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
   -- or                            , branch = '0.1.x',
     requires = {
-      {'nvim-telescope/telescope-live-grep-args.nvim'},
       {'nvim-lua/plenary.nvim'}
     }
   }
