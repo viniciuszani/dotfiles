@@ -65,17 +65,12 @@ vim.keymap.set('n', '<C-g>', function ()
 end, {})
 
 -- Live grep anything instead of current token.
-vim.keymap.set('n', '<C-h>', function ()
+vim.keymap.set('n', '<leader>gg', function ()
   builtin.live_grep({
     glob_pattern = "*/**/*",
     search = vim.fn.expand("<cword>")
   })
 end, {})
-
--- First grep, then fzf.
-vim.keymap.set('n', '<leader>ps', function()
-  builtin.grep_string({ search = vim.fn.expand("<cword>") })
-end)
 
 -- LSP goodies.
 vim.keymap.set('n', '<C-s>', builtin.lsp_document_symbols, {})
