@@ -95,3 +95,5 @@ vim.keymap.set("n", "<C-l>", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "<C-h>", "<cmd>tabprev<CR>")
 vim.keymap.set("n", "<C-x>", "<cmd>tabclose<CR>")
 
+-- Python path
+vim.g.python3_host_prog = "/home/vinicius/py3nvim/bin/python3"

@@ -13,7 +13,10 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
   -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {
+      {'nvim-telescope/telescope-live-grep-args.nvim'},
+      {'nvim-lua/plenary.nvim'}
+    }
   }
 
   -- Telescope file browsing with actions.
@@ -61,15 +64,6 @@ return require('packer').startup(function(use)
       -- Snippets
       {'L3MON4D3/LuaSnip'},             -- Required
       {'rafamadriz/friendly-snippets'}, -- Optional
-    }
-  }
-
-  -- Refactoring lib based on LSP / AST.
-  use {
-    "ThePrimeagen/refactoring.nvim",
-    requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-treesitter/nvim-treesitter"}
     }
   }
 
@@ -177,5 +171,14 @@ return require('packer').startup(function(use)
 
   -- Nice notifications.
   use 'rcarriga/nvim-notify'
+
+  -- Some goodies.
+  use { 'echasnovski/mini.nvim', branch = 'stable' }
+
+  -- Python refactoring utilities.
+  use({
+    'python-rope/ropevim',
+    ft = { 'python' }
+  })
 end)
 

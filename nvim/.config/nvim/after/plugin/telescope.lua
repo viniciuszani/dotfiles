@@ -8,6 +8,11 @@ require("telescope").setup {
       hijack_netrw = true,
       hidden = true,
     },
+
+    -- live_grep_args = { 
+    --   search_dirs = "",
+    --
+    -- }
   },
 
   defaults = {
@@ -16,6 +21,22 @@ require("telescope").setup {
       ".git",
       ".yarn",
     },
+
+    vimgrep_arguments = {
+       "rg",
+       "--color=never",
+       "--no-heading",
+       "--with-filename",
+       "--line-number",
+       "--column",
+       "--smart-case"
+    },
+
+    -- Filesystem cat (bat)
+    file_previewer = require("telescope.previewers").cat.new,
+
+    -- Use bat for grep preview too
+    grep_previewer = require("telescope.previewers").vimgrep.new
   }
 }
 
@@ -26,14 +47,34 @@ require("telescope").load_extension "file_browser"
 local file_browser= require("telescope").extensions.file_browser
 
 -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', [[:Telescope find_files hidden=true<CR>]], {})
+vim.keymap.set('n', '<C-p>', function ()
+  builtin.find_files({
+    hidden = true -- show hidden files.
+  })
+end, {})
 
 -- Grepping section. This helps A LOT.
--- Fzf on grep
-vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
+
+-- Grep token under cursor and then telescope the files.
+-- Includes hidden folders.
+vim.keymap.set('n', '<C-g>', function ()
+  builtin.grep_string({
+    glob_pattern = "*/**/*",
+    search = vim.fn.expand("<cword>")
+  })
+end, {})
+
+-- Live grep anything instead of current token.
+vim.keymap.set('n', '<C-h>', function ()
+  builtin.live_grep({
+    glob_pattern = "*/**/*",
+    search = vim.fn.expand("<cword>")
+  })
+end, {})
+
 -- First grep, then fzf.
 vim.keymap.set('n', '<leader>ps', function()
-  builtin.grep_string({ search = vim.fn.input("Grep > ") })
+  builtin.grep_string({ search = vim.fn.expand("<cword>") })
 end)
 
 -- LSP goodies.
