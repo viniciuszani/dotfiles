@@ -73,7 +73,6 @@ vim.keymap.set('n', '<leader>gg', function ()
 end, {})
 
 -- LSP goodies.
-vim.keymap.set('n', '<C-s>', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<C-t>', builtin.lsp_references, {})
 
 -- Telescope file browsing.

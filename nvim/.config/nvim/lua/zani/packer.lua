@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
   -- Using live grep, so ensure to have ripgrep installed:
   -- https://github.com/BurntSushi/ripgrep
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.3',
   -- or                            , branch = '0.1.x',
     requires = {
       {'nvim-lua/plenary.nvim'}
@@ -107,6 +107,7 @@ return require('packer').startup(function(use)
       'antoinemadec/FixCursorHold.nvim',
       -- Test runners
       'haydenmeade/neotest-jest',
+      'nvim-neotest/neotest-python',
     }
   }
 
@@ -162,7 +163,7 @@ return require('packer').startup(function(use)
   }
 
   -- Better indentation.
-  -- use "lukas-reineke/indent-blankline.nvim"
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- Rust lang defaults for neovim.
   -- Neovim has some rust support natively, but it's often outdated and buggy.
@@ -179,5 +180,16 @@ return require('packer').startup(function(use)
     'python-rope/ropevim',
     ft = { 'python' }
   })
+
+  use {
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require("gitlinker").setup()
+
+      vim.api.nvim_set_keymap('n', '<leader>gy', '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {silent = true})
+      vim.api.nvim_set_keymap('v', '<leader>gy', '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', {})
+    end
+  }
 end)
 

@@ -9,7 +9,7 @@ require("neotest").setup({
         end,
     }),
 
-    -- require("neotest-python")
+    require("neotest-python")
   }
 })
 
